@@ -3,5 +3,5 @@
 @section("title", $page_title)
 
 @section("content")
-    <h1>Home page</h1>
+    <h1>Register an account</h1>
 @endsection

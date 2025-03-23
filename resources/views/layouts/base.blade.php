@@ -9,7 +9,7 @@
     @yield("styles")
 </head>
 <body>
-    <x-header-component/>
+    <x-header-component :page_title="$page_title" />
     <main>
         @yield("content")
     </main>
