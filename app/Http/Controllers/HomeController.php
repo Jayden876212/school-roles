@@ -6,5 +6,13 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    //
+    public function showHome()
+    {
+        return view("pages.home");
+    }
+
+    public function handleRedirect()
+    {
+        return redirect()->route("home");
+    }
 }
