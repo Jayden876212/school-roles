@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    protected $table = "users";
     public $timestamps = false;
 
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -25,6 +26,7 @@ class User extends Authenticatable
         "password",
         "first_name",
         "last_name"
+
     ];
 
     /**
@@ -46,5 +48,15 @@ class User extends Authenticatable
         return [
             "password" => "hashed",
         ];
+    }
+
+    public function student()
+    {
+        return $this->hasOne(Student::class);
+    }
+
+    public function teacher()
+    {
+        return $this->hasOne(Teacher::class);
     }
 }
