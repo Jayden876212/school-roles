@@ -10,7 +10,7 @@
 </head>
 <body>
     <x-header-component :page_title="$page_title" />
-    <main>
+    <main class="container-fluid">
         @yield("content")
     </main>
     <x-footer-component/>
