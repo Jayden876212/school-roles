@@ -36,4 +36,9 @@ class AuthenticationController extends Controller
 
         return redirect()->route("home");
     }
+
+    public function handleRedirect(): RedirectResponse
+    {
+        return redirect()->route("login.show");
+    }
 }
