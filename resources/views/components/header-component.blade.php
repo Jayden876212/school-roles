@@ -45,10 +45,15 @@
                 </ul>
 
                 @auth
-                    <button type="button" class="btn btn-success" title="Currently Logged in User">
-                        <i class="fa-solid fa-user"></i>
-                        {{ Auth::user()->username }}
-                    </button>
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-success dropdown-toggle" title="Currently Logged in User" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-user"></i>
+                            {{ Auth::user()->username }}
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ route("account.logout") }}" class="dropdown-item">Logout</a></li>
+                        </ul>
+                    </div>
                 @endauth
 
                 @guest

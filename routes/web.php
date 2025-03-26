@@ -17,3 +17,5 @@ Route::post('/account/register', [RegistrationController::class, "register"])->n
 
 Route::get('/account/login', [AuthenticationController::class, "showLogin"])->name("account.login.show");
 Route::post('/account/login', [AuthenticationController::class, "login"])->name("account.login.handle");
+
+Route::get('/account/logout', [AuthenticationController::class, "logout"])->name("account.logout");

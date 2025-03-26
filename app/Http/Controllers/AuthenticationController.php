@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LoginRequest;
 use App\Models\Student;
 use Auth;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class AuthenticationController extends Controller
@@ -26,5 +27,12 @@ class AuthenticationController extends Controller
         $login_attempt = Auth::attempt($credentials);
 
         return redirect()->route("account.login.show");
+    }
+
+    public function logout(): RedirectResponse
+    {
+        Auth::logout();
+
+        return redirect()->route("home");
     }
 }
