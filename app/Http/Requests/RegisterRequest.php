@@ -35,6 +35,7 @@ class RegisterRequest extends FormRequest
         return [
             "username" => ["required", "max:20", "unique:App\Models\User"],
             "password" => ["required", "max:255"],
+            "confirm_password" => ["required", "same:password"],
             "first_name" => ["required", "max:255"],
             "last_name" => ["required", "max:255"],
             "role" => ["required", $this->roleExists]

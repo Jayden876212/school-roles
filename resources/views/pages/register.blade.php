@@ -33,6 +33,16 @@
                         @enderror
                     </div>
                     <div class="mb-3">
+                        <label for="confirmPasswordInput" class="form-label">Re-enter your password to confirm:</label>
+                        <input type="password" class="form-control" id="confirmPasswordInput" name="confirm_password">
+
+                        @error("confirm_password")
+                            <div class="alert alert-danger mt-3">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
                         <label for="firstNameInput" class="form-label">Enter your first name:</label>
                         <input type="text" class="form-control" id="firstNameInput" name="first_name">
 
