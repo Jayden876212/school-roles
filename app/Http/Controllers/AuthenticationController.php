@@ -25,7 +25,7 @@ class AuthenticationController extends Controller
             "password" => $request->password
         ];
 
-        $login_attempt = Auth::attempt($credentials);
+        Auth::attempt($credentials);
 
         return redirect()->route("account.login.show");
     }
