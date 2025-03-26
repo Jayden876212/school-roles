@@ -34,14 +34,14 @@ class AuthenticationController extends Controller
 
         $this->auth->attempt($credentials);
 
-        return redirect()->route("home");
+        return redirect()->route("home")->with("success", "Successfully logged you into your account.");
     }
 
     public function logout(): RedirectResponse
     {
         $this->auth->logout();
 
-        return redirect()->route("home");
+        return redirect()->back()->with("success", "Successfully logged you out of your account.");
     }
 
     public function handleRedirect(): RedirectResponse

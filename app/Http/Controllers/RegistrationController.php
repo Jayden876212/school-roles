@@ -56,6 +56,6 @@ class RegistrationController extends Controller
             return redirect()->back()->withErrors(["database" => "Failed to assign role to user."]);
         }
 
-        return redirect()->route("login.show");
+        return redirect()->route("login.show")->with("success", "Successfully registered your account.");
     }
 }

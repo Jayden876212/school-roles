@@ -9,7 +9,7 @@
     @yield("styles")
 </head>
 <body>
-    <x-header-component :page_title="$page_title" />
+    <x-header-component :page_title="$page_title" :success={{ $success }} />
     <main class="container-fluid">
         @yield("content")
     </main>

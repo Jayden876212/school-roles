@@ -8,12 +8,12 @@ use App\Http\Middleware\EnsureUserIsLoggedOut;
 use Illuminate\Support\Facades\Route;
 
 // Home/Landing/Index Pages
-Route::get('/', [HomeController::class, "showHome"])->name("root");
-Route::get('/home', [HomeController::class, "handleRedirect"])->name("home");
+Route::get('/', [HomeController::class, "showHome"])->name("home");
+Route::get('/home', [HomeController::class, "handleRedirect"])->name("home.handleRedirect");
 
 // Account Pages
 Route::middleware([EnsureUserIsLoggedOut::class])->group(function(): void {
-    Route::get('/account', [AuthenticationController::class, "handleRedirect"])->name("account.handle");
+    Route::get('/account', [AuthenticationController::class, "handleRedirect"])->name("account.handleRedirect");
 
     Route::get('/account/register', [RegistrationController::class, "showRegister"])->name("register.show");
     Route::post('/account/register', [RegistrationController::class, "register"])->name("register.handle");

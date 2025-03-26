@@ -20,6 +20,6 @@ class HomeController extends Controller
 
     public function handleRedirect()
     {
-        return redirect()->route("root");
+        return redirect()->route("home");
     }
 }

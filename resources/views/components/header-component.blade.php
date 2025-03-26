@@ -65,4 +65,9 @@
             </div>
         </div>
     </nav>
+    @if (session("success"))
+        <div class="alert alert-success m-2">
+            {{ session("success") }}
+        </div>
+    @endif
 </header>

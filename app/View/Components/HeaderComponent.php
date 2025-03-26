@@ -9,13 +9,15 @@ use Illuminate\View\Component;
 class HeaderComponent extends Component
 {
     public $page_title;
+    public $success;
 
     /**
      * Create a new component instance.
      */
-    public function __construct($pageTitle)
+    public function __construct($pageTitle, $success)
     {
         $this->page_title = $pageTitle;
+        $this->success = $success;
     }
 
     /**
