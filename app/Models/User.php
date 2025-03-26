@@ -60,4 +60,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Teacher::class, "username", "username");
     }
+
+    public function role(string $role_name): bool {
+        $role = $this->$role_name()->get()->first();
+
+        return (bool) $role;
+    }
 }

@@ -5,12 +5,10 @@
 @section("content")
     <h1>Home page</h1>
     @auth
-        @if ($role == "student")
+        @if (Auth::user()->role("student"))
             <p>student</p>
-            <p>{{ $role }}</p>
-        @elseif ($role == "teacher")
+        @elseif (Auth::user()->role("teacher"))
             <p>teacher</p>
-            <p>{{ $role }}</p>
         @else
             <p>not student or teacher but logged in</p>
         @endif
