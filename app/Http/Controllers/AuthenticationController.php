@@ -27,7 +27,7 @@ class AuthenticationController extends Controller
 
         Auth::attempt($credentials);
 
-        return redirect()->route("account.login.show");
+        return redirect()->route("home");
     }
 
     public function logout(): RedirectResponse
