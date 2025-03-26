@@ -2,16 +2,24 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Foundation\Http\FormRequest;
 
 class RegisterRequest extends FormRequest
 {
+    private $auth;
+
+    public function __construct(Guard $auth)
+    {
+        $this->auth = $auth;
+    }
+
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return !($this->auth->check());
     }
 
     /**
