@@ -15,8 +15,9 @@
                     <div class="mb-3">
                         <label for="usernameInput" class="form-label">Enter your username:</label>
                         <input type="text" class="form-control" id="usernameInput" name="username">
+
                         @error("username")
-                            <div class="alert alert-danger">
+                            <div class="alert alert-danger mt-3">
                                 {{ $message }}
                             </div>
                         @enderror
@@ -24,8 +25,9 @@
                     <div class="mb-3">
                         <label for="passwordInput" class="form-label">Enter your password:</label>
                         <input type="password" class="form-control" id="passwordInput" name="password">
+
                         @error("password")
-                            <div class="alert alert-danger">
+                            <div class="alert alert-danger mt-3">
                                 {{ $message }}
                             </div>
                         @enderror
@@ -38,6 +40,12 @@
                     <button type="submit" class="btn btn-success">
                         Login To Account
                     </button>
+
+                    @error("authentication")
+                        <div class="alert alert-danger mt-3">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
             </form>
         </section>

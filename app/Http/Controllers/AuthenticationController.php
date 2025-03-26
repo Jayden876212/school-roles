@@ -32,7 +32,10 @@ class AuthenticationController extends Controller
             "password" => $request->password
         ];
 
-        $this->auth->attempt($credentials);
+        $logged_in_successfully = $this->auth->attempt($credentials);
+        if (! $logged_in_successfully) {
+            return redirect()->back()->withErrors(["authentication" => "Failed to log you into your account (credentials do not match)."]);
+        }
 
         return redirect()->route("home")->with("success", "Successfully logged you into your account.");
     }

@@ -15,8 +15,9 @@
                     <div class="mb-3">
                         <label for="usernameInput" class="form-label">Enter your username:</label>
                         <input type="text" class="form-control" id="usernameInput" name="username">
+
                         @error("username")
-                            <div class="alert alert-danger">
+                            <div class="alert alert-danger mt-3">
                                 {{ $message }}
                             </div>
                         @enderror
@@ -24,8 +25,9 @@
                     <div class="mb-3">
                         <label for="passwordInput" class="form-label">Enter your password:</label>
                         <input type="password" class="form-control" id="passwordInput" name="password">
+
                         @error("password")
-                            <div class="alert alert-danger">
+                            <div class="alert alert-danger mt-3">
                                 {{ $message }}
                             </div>
                         @enderror
@@ -33,8 +35,9 @@
                     <div class="mb-3">
                         <label for="firstNameInput" class="form-label">Enter your first name:</label>
                         <input type="text" class="form-control" id="firstNameInput" name="first_name">
+
                         @error("first_name")
-                            <div class="alert alert-danger">
+                            <div class="alert alert-danger mt-3">
                                 {{ $message }}
                             </div>
                         @enderror
@@ -42,8 +45,9 @@
                     <div class="mb-3">
                         <label for="lastNameInput" class="form-label">Enter your last name:</label>
                         <input type="text" class="form-control" id="lastNameInput" name="last_name">
+
                         @error("last_name")
-                            <div class="alert alert-danger">
+                            <div class="alert alert-danger mt-3">
                                 {{ $message }}
                             </div>
                         @enderror
@@ -60,8 +64,9 @@
                             Teacher
                         </label>
                     </div>
+
                     @error("role")
-                        <div class="alert alert-danger">
+                        <div class="alert alert-danger mt-3">
                             {{ $message }}
                         </div>
                     @enderror
@@ -73,8 +78,9 @@
                     <button type="submit" class="btn btn-success">
                         Create Account
                     </button>
+
                     @error("database")
-                        <div class="alert alert-danger">
+                        <div class="alert alert-danger mt-3">
                             {{ $message }}
                         </div>
                     @enderror
