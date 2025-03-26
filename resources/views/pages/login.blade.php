@@ -14,7 +14,7 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <label for="usernameInput" class="form-label">Enter your username:</label>
-                        <input type="text" class="form-control" id="usernameInput" name="username">
+                        <input type="text" class="form-control" id="usernameInput" name="username" required>
 
                         @error("username")
                             <div class="alert alert-danger mt-3">
@@ -24,7 +24,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="passwordInput" class="form-label">Enter your password:</label>
-                        <input type="password" class="form-control" id="passwordInput" name="password">
+                        <input type="password" class="form-control" id="passwordInput" name="password" required>
 
                         @error("password")
                             <div class="alert alert-danger mt-3">

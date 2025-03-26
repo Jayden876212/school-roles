@@ -14,7 +14,7 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <label for="usernameInput" class="form-label">Enter your username:</label>
-                        <input type="text" class="form-control" id="usernameInput" name="username">
+                        <input type="text" class="form-control" id="usernameInput" name="username" required maxlength="20">
 
                         @error("username")
                             <div class="alert alert-danger mt-3">
@@ -24,7 +24,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="passwordInput" class="form-label">Enter your password:</label>
-                        <input type="password" class="form-control" id="passwordInput" name="password">
+                        <input type="password" class="form-control" id="passwordInput" name="password" required maxlength="255">
 
                         @error("password")
                             <div class="alert alert-danger mt-3">
@@ -34,7 +34,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="confirmPasswordInput" class="form-label">Re-enter your password to confirm:</label>
-                        <input type="password" class="form-control" id="confirmPasswordInput" name="confirm_password">
+                        <input type="password" class="form-control" id="confirmPasswordInput" name="confirm_password" required>
 
                         @error("confirm_password")
                             <div class="alert alert-danger mt-3">
@@ -44,7 +44,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="firstNameInput" class="form-label">Enter your first name:</label>
-                        <input type="text" class="form-control" id="firstNameInput" name="first_name">
+                        <input type="text" class="form-control" id="firstNameInput" name="first_name" required maxlength="255">
 
                         @error("first_name")
                             <div class="alert alert-danger mt-3">
@@ -54,7 +54,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="lastNameInput" class="form-label">Enter your last name:</label>
-                        <input type="text" class="form-control" id="lastNameInput" name="last_name">
+                        <input type="text" class="form-control" id="lastNameInput" name="last_name" required maxlength="255">
 
                         @error("last_name")
                             <div class="alert alert-danger mt-3">
