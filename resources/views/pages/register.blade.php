@@ -67,7 +67,7 @@
                     @enderror
                 </div>
                 <div class="card-footer">
-                    <a href="{{ route("account.login.show") }}" class="btn btn-primary">
+                    <a href="{{ route("login.show") }}" class="btn btn-primary">
                         Login
                     </a>
                     <button type="submit" class="btn btn-success">

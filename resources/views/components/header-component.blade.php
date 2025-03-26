@@ -16,7 +16,7 @@
 
                     <li class="nav-item">
                         <a
-                            href="{{ route("account.register.show") }}"
+                            href="{{ route("register.show") }}"
                             class="
                                 nav-link
                                 @auth disabled @endauth
@@ -30,7 +30,7 @@
                     </li>
                     <li class="nav-item">
                         <a
-                            href="{{ route("account.login.show") }}"
+                            href="{{ route("login.show") }}"
                             class="
                                 nav-link
                                 @auth disabled @endauth
@@ -51,7 +51,7 @@
                             {{ Auth::user()->username }}
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ route("account.logout") }}" class="dropdown-item">Logout</a></li>
+                            <li><a href="{{ route("logout") }}" class="dropdown-item">Logout</a></li>
                         </ul>
                     </div>
                 @endauth

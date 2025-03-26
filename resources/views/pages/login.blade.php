@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <a href="{{ route("account.register.show") }}" class="btn btn-primary">
+                    <a href="{{ route("register.show") }}" class="btn btn-primary">
                         Register
                     </a>
                     <button type="submit" class="btn btn-success">
