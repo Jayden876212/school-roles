@@ -62,7 +62,7 @@ class User extends Authenticatable
     }
 
     public function role(string $role_name): bool {
-        $role = $this->$role_name()->get()->first();
+        $role = $this->$role_name()->exists();
 
         return (bool) $role;
     }
