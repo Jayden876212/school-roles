@@ -73,6 +73,11 @@
                     <button type="submit" class="btn btn-success">
                         Create Account
                     </button>
+                    @error("database")
+                        <div class="alert alert-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
             </form>
         </section>

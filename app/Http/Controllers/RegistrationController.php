@@ -44,7 +44,7 @@ class RegistrationController extends Controller
                 "last_name" => $request->last_name
             ]);
         } catch (Throwable $caught) {
-            return redirect()->route("login.show")->with("error", "Failed to create user.");
+            return redirect()->back()->withErrors(["database" => "Failed to create user."]);
         }
 
         $role = $request->role;
@@ -53,7 +53,7 @@ class RegistrationController extends Controller
         } catch (Throwable $caught) {
             $created_user->delete();
 
-            return redirect()->route("login.show")->with("error", "Failed to assign role to user.");
+            return redirect()->back()->withErrors(["database" => "Failed to assign role to user."]);
         }
 
         return redirect()->route("login.show");
