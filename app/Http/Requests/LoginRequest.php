@@ -30,7 +30,8 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "username" => ["required", "exists:App\Models\User"],
+            "password" => "required"
         ];
     }
 }
