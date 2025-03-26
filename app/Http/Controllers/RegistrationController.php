@@ -10,6 +10,7 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Throwable;
 
 class RegistrationController extends Controller
 {
@@ -35,25 +36,24 @@ class RegistrationController extends Controller
 
     public function register(RegisterRequest $request): RedirectResponse
     {
-        $created_user = $this->users::create([
-            "username" => $request->username,
-            "password" => $request->password,
-            "first_name" => $request->first_name,
-            "last_name" => $request->last_name
-        ]);
-
-        if (!$created_user) {
-            $created_user->delete();
-
+        try {
+            $created_user = $this->users::create([
+                "username" => $request->username,
+                "password" => $request->password,
+                "first_name" => $request->first_name,
+                "last_name" => $request->last_name
+            ]);
+        } catch (Throwable $caught) {
             return redirect()->route("login.show")->with("error", "Failed to create user.");
         }
 
         $role = $request->role;
-        $created_role = $this->$role::create(["username" => $created_user->username]);
-        if (!$created_role) {
+        try {
+            $this->$role::create(["username" => $created_user->username]);
+        } catch (Throwable $caught) {
             $created_user->delete();
 
-            return redirect()->route("login.show")->with("error", "Failed to create role.");
+            return redirect()->route("login.show")->with("error", "Failed to assign role to user.");
         }
 
         return redirect()->route("login.show");
