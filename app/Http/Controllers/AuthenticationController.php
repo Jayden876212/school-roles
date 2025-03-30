@@ -44,7 +44,7 @@ class AuthenticationController extends Controller
     {
         $this->auth->logout();
 
-        return redirect()->back()->with("success", "Successfully logged you out of your account.");
+        return redirect()->route("home")->with("success", "Successfully logged you out of your account.");
     }
 
     public function handleRedirect(): RedirectResponse
