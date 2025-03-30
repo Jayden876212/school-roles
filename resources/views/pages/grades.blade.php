@@ -19,19 +19,33 @@
                             <input id="monthInput" class="form-control" type="month" name="month">
                         </div>
 
-                        <select class="form-select" aria-label="Select a grade" name="grade">
-                            <option selected>Select a grade</option>
-                            @foreach ($grades as $grade)
-                                <option value="{{ $grade->grade }}">
-                                    {{ $grade->grade }}
-                                </option>
-                            @endforeach
-                        </select>
+                        <div class="mb-3">
+                            <select class="form-select" aria-label="Select a grade" name="grade">
+                                <option selected>Select a grade</option>
+                                @foreach ($grades as $grade)
+                                    <option value="{{ $grade->grade }}">
+                                        {{ $grade->grade }}
+                                    </option>
+                                @endforeach
+                            </select>
+
+                            @error("grade")
+                                <div class="alert alert-danger" role="alert">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-success w-100" type="submit">
+                        <button class="btn btn-success w-100 mb-3" type="submit">
                             Submit Grades
                         </button>
+
+                        @error("database")
+                            <div class="alert alert-danger" role="alert">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                 </form>
             </section>

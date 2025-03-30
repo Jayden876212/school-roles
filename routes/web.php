@@ -30,6 +30,7 @@ Route::get('/account/logout', [AuthenticationController::class, "logout"])->name
 // Grades
 Route::middleware([EnsureUserIsLoggedIn::class])->group(function(): void {
     Route::get("/grades", [GradesController::class, "showGrades"])->name("grades.show");
+    Route::post("/grades", [GradesController::class, "submitGrade"])->name("grades.submit");
 });
 
 // Form Action Test Pages
