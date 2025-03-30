@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\FormActionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Middleware\EnsureUserIsLoggedIn;
 use App\Http\Middleware\EnsureUserIsLoggedOut;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
 
 // Home/Landing/Index Pages
@@ -23,3 +25,7 @@ Route::middleware([EnsureUserIsLoggedOut::class])->group(function(): void {
 });
 
 Route::get('/account/logout', [AuthenticationController::class, "logout"])->name("logout")->middleware([EnsureUserIsLoggedIn::class]);
+
+Route::get("/form", [FormActionController::class, "showPage"])->name("form");
+Route::post("/form/request1", [FormActionController::class, "handleRequest1"])->name("request1");
+Route::post("/form/request2", [FormActionController::class, "handleRequest2"])->name("request2");
