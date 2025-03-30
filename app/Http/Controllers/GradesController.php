@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SubmitGradeRequest;
 use App\Models\Exam;
 use App\Models\Grade;
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -32,7 +33,7 @@ class GradesController extends Controller
 
     public function submitGrade(SubmitGradeRequest $request): RedirectResponse
     {
-        $month = $request->month;
+        $month = Carbon::parse($request->month);
 
         try {
             $student = $this->user->student()->sole();

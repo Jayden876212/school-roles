@@ -16,11 +16,17 @@
 
                         <div class="mb-3">
                             <label for="monthInput" class="form-label">Enter the month of the exam:</label>
-                            <input id="monthInput" class="form-control" type="month" name="month">
+                            <input id="monthInput" class="form-control mb-3" type="month" name="month">
+
+                            @error("month")
+                                <div class="alert alert-danger" role="alert">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
 
                         <div class="mb-3">
-                            <select class="form-select" aria-label="Select a grade" name="grade">
+                            <select class="form-select mb-3" aria-label="Select a grade" name="grade">
                                 <option selected>Select a grade</option>
                                 @foreach ($grades as $grade)
                                     <option value="{{ $grade->grade }}">

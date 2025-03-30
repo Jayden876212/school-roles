@@ -16,11 +16,18 @@ class Exam extends Model
         "month"
     ];
 
-    public static function submitExamGrade(string $month, Grade $grade, Student $student): Exam
+    public static function sanitiseMonthForDatabase(Carbon $month): string
+    {
+        $sanitised_month = Carbon::parse($month->format("Y-m"))->format("Y-m-d");
+
+        return $sanitised_month;
+    }
+
+    public static function submitExamGrade(Carbon $month, Grade $grade, Student $student): Exam
     {
         $exam_grade_submission = new Exam();
 
-        $exam_grade_submission->month = Carbon::parse($month)->format("Y-m-d");
+        $exam_grade_submission->month = self::sanitiseMonthForDatabase($month);
         $exam_grade_submission->grade = $grade->grade;
         $exam_grade_submission->student_id = $student->id;
 

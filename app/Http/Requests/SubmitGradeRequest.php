@@ -2,8 +2,11 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Exam;
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class SubmitGradeRequest extends FormRequest
 {
@@ -29,8 +32,22 @@ class SubmitGradeRequest extends FormRequest
      */
     public function rules(): array
     {
+        $student_id = $this->user()->student()->sole()->id;
         return [
-            //
+            "month" => [
+                "required",
+                "date_format:Y-m-d",
+                Rule::unique("exams", "month")->where("student_id", $student_id)],
+            "grade" => ["required", "exists:App\Models\Grade"]
         ];
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $month = Carbon::parse($this->input("month"));
+
+        $this->merge([
+            "month" => Exam::sanitiseMonthForDatabase($month)
+        ]);
     }
 }
