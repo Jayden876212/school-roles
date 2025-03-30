@@ -42,6 +42,20 @@
                             Login
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a
+                            href="{{ route("grades.show") }}"
+                            class="
+                                nav-link
+                                @guest disabled @endguest
+                                @if ($page_title == "Grades") active @endif
+                            "
+                            @guest aria-disabled="true" @endguest
+                            @if ($page_title == "Grades") aria-current="page" @endif
+                        >
+                            Grades
+                        </a>
+                    </li>
                 </ul>
 
                 @auth

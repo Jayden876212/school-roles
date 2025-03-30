@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\FormActionController;
+use App\Http\Controllers\GradesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Middleware\EnsureUserIsLoggedIn;
@@ -26,6 +27,12 @@ Route::middleware([EnsureUserIsLoggedOut::class])->group(function(): void {
 
 Route::get('/account/logout', [AuthenticationController::class, "logout"])->name("logout")->middleware([EnsureUserIsLoggedIn::class]);
 
+// Grades
+Route::middleware([EnsureUserIsLoggedIn::class])->group(function(): void {
+    Route::get("/grades", [GradesController::class, "showGrades"])->name("grades.show");
+});
+
+// Form Action Test Pages
 Route::get("/form", [FormActionController::class, "showPage"])->name("form");
 Route::post("/form/request1", [FormActionController::class, "handleRequest1"])->name("request1");
 Route::post("/form/request2", [FormActionController::class, "handleRequest2"])->name("request2");
