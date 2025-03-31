@@ -32,7 +32,7 @@ class SubmitGradeRequest extends FormRequest
      */
     public function rules(): array
     {
-        $student_id = $this->user()->student()->sole()->id;
+        $student_id = $this->user->getStudent()->id;
         return [
             "month" => [
                 "required",

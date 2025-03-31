@@ -56,9 +56,19 @@ class User extends Authenticatable
         return $this->hasOne(Student::class, "username", "username");
     }
 
+    public function getStudent(): Student
+    {
+        return $this->student()->sole();
+    }
+
     public function teacher(): HasOne
     {
         return $this->hasOne(Teacher::class, "username", "username");
+    }
+
+    public function getTeacher(): Teacher
+    {
+        return $this->teacher()->sole();
     }
 
     public function role(string $role_name): bool {

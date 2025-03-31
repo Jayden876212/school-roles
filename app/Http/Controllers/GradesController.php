@@ -23,11 +23,16 @@ class GradesController extends Controller
 
     public function showGrades(): View
     {
-        $grades = Grade::all();
+        if ($this->user->role("student")) {
+            $grades = Grade::all();
+            $student = $this->user->getStudent();
+            $exams = $student->exams();
+        }
 
         return view("pages.grades", [
             "user" => $this->user,
-            "grades" => $grades
+            "grades" => $grades,
+            "exams" => $exams
         ])->with("page_title", "Grades");
     }
 
@@ -36,13 +41,13 @@ class GradesController extends Controller
         $month = Carbon::parse($request->month);
 
         try {
-            $student = $this->user->student()->sole();
+            $student = $this->user->getStudent();
         } catch (Throwable $caught) {
             return redirect()->back()->withErrors(["database" => "Failed to obtain student for assigning exam to (database error)"]);
         }
 
         try {
-            $grade = Grade::where("grade", "=", $request->grade)->sole();
+            $grade = Grade::getGrade($request->grade);
         } catch (Throwable $caught) {
             return redirect()->back()->withErrors(["database" => "Failed to obtain grade for assigning to exam (database error)"]);
         }

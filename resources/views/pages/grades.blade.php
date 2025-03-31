@@ -27,12 +27,16 @@
 
                         <div class="mb-3">
                             <select class="form-select mb-3" aria-label="Select a grade" name="grade">
-                                <option selected>Select a grade</option>
-                                @foreach ($grades as $grade)
-                                    <option value="{{ $grade->grade }}">
-                                        {{ $grade->grade }}
-                                    </option>
-                                @endforeach
+                                @if ($grades->isNotEmpty())
+                                    <option selected>Select a grade</option>
+                                    @foreach ($grades as $grade)
+                                        <option value="{{ $grade->grade }}">
+                                            {{ $grade->grade }}
+                                        </option>
+                                    @endforeach
+                                @else
+                                    <option selected>No grades available</option>
+                                @endif
                             </select>
 
                             @error("grade")
@@ -54,6 +58,39 @@
                         @enderror
                     </div>
                 </form>
+            </section>
+
+            <section id="seeGrades" class="col-md-5 mx-auto">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>See your grades for each month</h2>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table">
+                            @if ($exams->isEmpty())
+                                <caption><div class="alert alert-info" role="alert">
+                                    No exam grades have been submitted.
+                                </div></caption>
+                            @endif
+                            <thead>
+                                <tr>
+                                    <th scope="col" title="Exam Unique ID">#</th>
+                                    <th scope="col">Grade</th>
+                                    <th scope="col">Month</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($exams as $exam)
+                                    <tr>
+                                        <td scope="row">{{ $exam->id }}</td>
+                                        <td>{{ $exam->grade }}</td>
+                                        <td>{{ $exam->month }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </section>
         @endif
     </div>

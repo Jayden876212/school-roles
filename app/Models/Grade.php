@@ -13,4 +13,11 @@ class Grade extends Model
     protected $primaryKey = "grade";
     public $incrementing = false;
     protected $keyType = "string";
+
+    public static function getGrade(string $grade): Grade
+    {
+        $grade_instance = self::where("grade", "=", $grade)->sole();
+
+        return $grade_instance;
+    }
 }
