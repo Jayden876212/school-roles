@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SubmitGradeRequest;
 use App\Models\Exam;
 use App\Models\Grade;
+use App\Models\Student;
 use Carbon\Carbon;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\View\View;
@@ -23,16 +24,21 @@ class GradesController extends Controller
 
     public function showGrades(): View
     {
-        if ($this->user->role("student")) {
+        $user = $this->user;
+
+        if ($user->role("student")) {
             $grades = Grade::all();
             $student = $this->user->getStudent();
-            $exams = $student->exams();
+            $exams = $student->getExams();
+        } elseif ($user->role("teacher")) {
+            $students = Student::all();
         }
 
         return view("pages.grades", [
-            "user" => $this->user,
-            "grades" => $grades,
-            "exams" => $exams
+            "user" => $user,
+            "grades" => $grades ?? null,
+            "exams" => $exams ?? null,
+            "students" => $students ?? null
         ])->with("page_title", "Grades");
     }
 

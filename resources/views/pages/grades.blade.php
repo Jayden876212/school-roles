@@ -92,6 +92,30 @@
                     </div>
                 </div>
             </section>
+        @elseif ($user->role("teacher"))
+            <section id="visualiseStudentsGrades" class="col-md-5 mx-auto">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Visualise a student's grades over time</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <select class="form-select mb-3" aria-label="Select a student" id="studentInput">
+                                @if ($students->isNotEmpty())
+                                    <option selected>Select a student</option>
+                                    @foreach ($students as $student)
+                                        <option value="{{ $student->id }}">
+                                            {{ $student->getUser()->first_name }} {{ $student->getUser()->last_name }}
+                                        </option>
+                                    @endforeach
+                                @else
+                                    <option selected>No students available</option>
+                                @endif
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </section>
         @endif
     </div>
 @endsection
